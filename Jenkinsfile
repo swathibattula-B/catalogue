@@ -6,9 +6,7 @@ pipeline {
     }
     environment {
         appVersion = ""
-        ACC_ID = "357365535052"
         
-        region = "us-east-1"
     }
     options {
         //disableConcurrentBuilds()
