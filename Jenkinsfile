@@ -46,13 +46,10 @@ pipeline {
         stage('Build Image') {
             steps {
                script{
-                    withAWS(credentials: 'aws-creds', region: "${region}") {
-                        // Commands here have AWS authentication
                         sh """
-                            aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com
-                            docker build -t ${ACC_ID}.dkr.ecr.${region}.amazonaws.com/roboshop/catalogue:${appVersion} .
-                            docker push ${ACC_ID}.dkr.ecr.${region}.amazonaws.com/roboshop/catalogue:${appVersion}
+                            docker build -t catalogue:${appVersion} .
                         """
+                            
                     }
                 }
             }
